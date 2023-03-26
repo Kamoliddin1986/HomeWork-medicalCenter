@@ -1,5 +1,6 @@
 
 
 export class CreateClientDto {
-    phone_number: string;
+    client_phone_number: string;
+    otp_id: string
 }

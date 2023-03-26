@@ -24,7 +24,7 @@ client_photo: string;
 @Prop({default: true})
 client_is_active: boolean;
 
-@Prop()
+@Prop({required: true})
 otp_id: string;
 
 

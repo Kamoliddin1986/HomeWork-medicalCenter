@@ -11,7 +11,6 @@ import { AddMinutesToDate } from '../helpers/addMinutes';
 import { Otp } from '../otp/schemas/otp.schema';
 import { dates, decode, encode } from '../helpers/crypto';
 import { VerifyOtpDto } from '../otp/dto/verifyOtp.dto';
-import { CreateClientDto } from '../client/dto/create-client.dto';
 import { CreateSpecialistDto } from './dto/create-spacialist.dto';
 import { JwtService } from '@nestjs/jwt';
 // import { OtpService } from '../otp/otp.service';
@@ -173,8 +172,9 @@ export class SpecialistService {
     }
   }
 
-  findAll() {
-    return `This action returns all specialist`;
+ async findAll() {
+    const allSpecialists = await this.specialistModel.find()
+    return allSpecialists;
   }
 
   async create(createSpecialistDto: CreateSpecialistDto){
@@ -182,17 +182,19 @@ export class SpecialistService {
     return cr
   }
 
-  findOne(id: number) {
-    return `This action returns a #${id} specialist`;
+  async findOne(id: string) {
+    const oneSpec = await this.specialistModel.findById(id)
+    return oneSpec;
   }
 
   async updateSpecialist(id: string, updateSpecialistDto: UpdateSpecialistDto) {
     const updatedSpecialist = await this.specialistModel.findByIdAndUpdate(id, updateSpecialistDto)
 
-    return `This action updates a #${id} specialist`;
+    return updatedSpecialist;
   }
 
-  remove(id: number) {
-    return `This action removes a #${id} specialist`;
+  async remove(id: string) {
+    const delspecial = await this.specialistModel.findByIdAndDelete(id)
+    return delspecial;
   }
 }

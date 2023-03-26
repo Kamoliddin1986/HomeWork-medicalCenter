@@ -27,7 +27,7 @@ export class SpecialistController {
 
   @Get(':id')
   findOne(@Param('id') id: string) {
-    return this.specialistService.findOne(+id);
+    return this.specialistService.findOne(id);
   }
 
   @Patch(':id')
@@ -37,6 +37,6 @@ export class SpecialistController {
 
   @Delete(':id')
   remove(@Param('id') id: string) {
-    return this.specialistService.remove(+id);
+    return this.specialistService.remove(id);
   }
 }
