@@ -7,6 +7,7 @@ import { OtpModule } from './otp/otp.module';
 import { ConfigModule } from '@nestjs/config';
 import { MongooseModule } from '@nestjs/mongoose';
 import { TokenModule } from './token/token.module';
+import { AdminModule } from './admin/admin.module';
 
 @Module({
   imports: [ConfigModule.forRoot({
@@ -14,7 +15,7 @@ import { TokenModule } from './token/token.module';
     isGlobal: true
   }),
   MongooseModule.forRoot(process.env.MONGO_URI),
-  SpecialistModule, ClientModule, OtpModule, TokenModule],
+  SpecialistModule, ClientModule, OtpModule, TokenModule, AdminModule],
   controllers: [AppController],
   providers: [AppService],
 })
