@@ -6,12 +6,14 @@ import { AdminService } from './admin.service';
 import { AdminController } from './admin.controller';
 import { Admin, AdminSchema } from './schemas/admin.schema';
 import { Token, TokenSchema } from '../token/schemas/token.schema';
+import { SpecialistModule } from '../specialist/specialist.module';
 
 @Module({
   imports: [MongooseModule.forFeature([
     {name: Admin.name, schema: AdminSchema},
     {name: Token.name, schema: TokenSchema}]),
     TokenModule,
+    SpecialistModule,
     JwtModule.register({})],
   controllers: [AdminController],
   providers: [AdminService]

@@ -21,6 +21,7 @@ import { TokenModule } from '../token/token.module';
    JwtModule.register({})
   ],
   controllers: [SpecialistController],
-  providers: [SpecialistService]
+  providers: [SpecialistService],
+  exports: [SpecialistService]
 })
 export class SpecialistModule {}

@@ -119,7 +119,7 @@ async verifyOtp(verifyOtpDto: VerifyOtpDto){
 
           }else{
             const createdToken = await this.tokenService.create({
-              table_name: 'specialist',
+              table_name: 'client',
               user_id: cl_id,
               hashed_refresh_token
             })

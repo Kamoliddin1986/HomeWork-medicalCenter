@@ -3,6 +3,7 @@ import { AdminService } from './admin.service';
 import { CreateAdminDto } from './dto/create-admin.dto';
 import { Request } from 'express';
 import { UpdatePassAdminDto } from './dto/update-admin.dto';
+import { LoginAdminDto } from './dto/login-admin.dto';
 
 @Controller('admin')
 export class AdminController {
@@ -13,12 +14,16 @@ export class AdminController {
     return this.adminService.create(createAdminDto);
   }
 
-  @Post()
+  @Patch()
   updatePass(@Body() updatePassAdminDto: UpdatePassAdminDto,
-  @Req() request: Request) {
-    const updatedPass = this.adminService
+  @Param('id') id: string,  @Req() request: Request) {
     
-    return this.adminService.updatePass(updatePassAdminDto, request)
+    return this.adminService.updatePass(id, updatePassAdminDto, request)
+  }
+
+  @Post('login')
+  loginAdmin(@Body() loginAdminDto: LoginAdminDto){
+    return this.adminService.loginAdmin(loginAdminDto)
   }
   
   
